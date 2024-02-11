@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "778841693947",
+    "project_id": "buildforbharathackathon",
+    "storage_bucket": "buildforbharathackathon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778841693947:android:cc62fb80c71b2713475a5e",
+        "android_client_info": {
+          "package_name": "com.example.buildforbharat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBByJHYRdlTQGcVe7G5IruQGf_AK8EurGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
