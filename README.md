@@ -77,7 +77,7 @@ An efficient architecture is not to memorise the past event and to derive the ou
 The market moves basically on herd mentality where a crowd will decide the direction of the market. The fact is also little bit harsh if these data are driven by the single entity, which I hope will be take care with the help of blockchain technology on later days.
 
 
-##Prepare the executables:
+## Prepare the executables:
 
 Download the 3 APK files from the link provided 
 
@@ -129,12 +129,8 @@ https://www.youtube.com/watch?v=hSLpvGuECVk
 _________________________________________________________________________
 
 ## Screenshots
-<img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/909d3280-1a28-41f0-ad04-789565bf71fc" width="45%"></img>
-<img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/834c7bc8-541b-46eb-877b-34feba3115c5" width="45%"></img> <img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/211a4bd1-e595-44d0-8ffe-d7a688884c8d" width="45%"></img> <img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/141b3179-19ff-47f3-a01f-d8ba7f1deacc" width="45%"></img> <img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/781cde83-bb3d-48da-b4cf-ea1fb5def082" width="45%"></img> <img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/1bc8f314-499f-46bb-8d6e-2400dda9aaee" width="45%"></img>
-
-
-
-
+<img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/3df19652-2668-4359-8b01-4acdf8ba6ea7" width="45%"></img>
+<img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/335e0a9c-7661-40d4-86ad-0bed2f971393" width="45%"></img> <img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/6928e849-5afe-4ac3-8b5e-4cbebc3f3a30" width="45%"></img> <img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/d8724ea6-0f67-4a4b-adc7-513e0753254e" width="45%"></img> <img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/2a135969-23c1-4333-8aa6-f2656f0eb54c" width="45%"></img> <img src="https://github.com/sitrsh12/buildforbharathackathon/assets/16430056/9358b506-1e86-49e9-845a-20dbfd603303" width="45%"></img>
 
 
 
