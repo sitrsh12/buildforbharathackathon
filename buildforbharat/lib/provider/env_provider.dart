@@ -86,7 +86,7 @@ class EnvProvider with ChangeNotifier{
       });
     }else if(theName == "Spa"){
       databaseReference.child('-NpywRzo-GNWrhlGSCL1').update({
-        'name': 'Apple',
+        'name': 'Spa',
         'distance': spaDistance.toStringAsFixed(0),
         'assignedPrice': price.toStringAsFixed(0),
       });

@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,7 +7,12 @@ import '../provider/env_provider.dart';
 import '../widget/distanceSlider.dart';
 import '../widget/productSlider.dart';
 import 'envSettings.dart';
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   String city = "Gangtok";
   String place = "MG MARG";
   String unit = "Kg";
@@ -22,6 +28,16 @@ class MyHomePage extends StatelessWidget {
     envTotalValue = sharedPreferences.getDouble("envTotalValue");
   }
 
+  @override
+  void initState() {
+    readAppleData();
+    readBananaData();
+    readHairCutData();
+    readSpaData();
+    readMilkData();
+    readBreadData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,41 +71,40 @@ class MyHomePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          const DistanceSlider(
+                          DistanceSlider(
                               groceryType: "Apple",
                               city: "Gangtok",
-                              initialValue: 2.2,
+                              initialValue: double.parse(buyerAppleCount)/10805,
                               maxValue: 5.0,
                               place: "MG Marg",
                               householdRate: 10805
                           ),
                           ProductSlider(
                               groceryType: "Apple",
-                              initialValue: 230+(10*provider.appleDistance/gangtokHouseholdRate),
+                              initialValue: 230+(10*double.parse(buyerAppleCount)/10805),
                               maxValue: appleMaxRate,
-                              buyerNumbers:
-                                  provider.appleDistance == 0.0 ? initailGangtokRadius*gangtokHouseholdRate : provider.appleDistance,
+                              buyerNumbers: double.parse(buyerAppleCount),
                               unit: unit,
-                              householdRate: gangtokHouseholdRate
+                              householdRate: 10805
                           ),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          const DistanceSlider(
+                          DistanceSlider(
                               groceryType: "Banana",
                               city: "Gangtok",
-                              initialValue: 2.2,
+                              initialValue: double.parse(buyerBananaCount)/10805,
                               maxValue: 5.0,
                               place: "MG Marg",
                               householdRate: 10805
                           ),
                           ProductSlider(
                               groceryType: "Banana",
-                              initialValue: 60+(10*provider.bananaDistance/gangtokHouseholdRate),
+                              initialValue: 60+(10*double.parse(buyerBananaCount)/10805),
                               maxValue: 150,
-                              buyerNumbers: provider.bananaDistance == 0.0 ? initailGangtokRadius*gangtokHouseholdRate : provider.bananaDistance,
+                              buyerNumbers: double.parse(buyerBananaCount),
                               unit: "12 Pc",
                               householdRate: gangtokHouseholdRate
                           ),
@@ -103,19 +118,19 @@ class MyHomePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          const DistanceSlider(
+                          DistanceSlider(
                               groceryType: "HairCut",
                               city: "Gangtok",
-                              initialValue: 2.2,
+                              initialValue: double.parse(buyerHairCutCount)/10805,
                               maxValue: 5.0,
                               place: "MG Marg",
                               householdRate: 10805
                           ),
                           ProductSlider(
                               groceryType: "HairCut",
-                              initialValue: 250+(10*provider.hairCutDistance/gangtokHouseholdRate),
+                              initialValue: 250+(10*double.parse(buyerHairCutCount)/10805),
                               maxValue: 500,
-                              buyerNumbers: provider.hairCutDistance == 0.0 ? initailGangtokRadius*gangtokHouseholdRate : provider.hairCutDistance,
+                              buyerNumbers: double.parse(buyerHairCutCount),
                               unit: "Hair Cut",
                               householdRate: gangtokHouseholdRate
                           ),
@@ -124,19 +139,19 @@ class MyHomePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          const DistanceSlider(
+                          DistanceSlider(
                               groceryType: "Spa",
                               city: "Gangtok",
-                              initialValue: 2.2,
+                              initialValue: double.parse(buyerSpaCount)/10805,
                               maxValue: 5.0,
                               place: "MG Marg",
                               householdRate: 10805
                           ),
                           ProductSlider(
                               groceryType: "Spa",
-                              initialValue: 400+(10*provider.spaDistance/gangtokHouseholdRate),
+                              initialValue: 400+(10*double.parse(buyerSpaCount)/10805),
                               maxValue: 1000,
-                              buyerNumbers: provider.spaDistance == 0.0 ? initailGangtokRadius*gangtokHouseholdRate : provider.spaDistance,
+                              buyerNumbers: double.parse(buyerSpaCount),
                               unit: "Spa",
                               householdRate: gangtokHouseholdRate
                           ),
@@ -151,19 +166,19 @@ class MyHomePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          const DistanceSlider(
+                          DistanceSlider(
                               groceryType: "Bread",
                               city: "Gangtok",
-                              initialValue: 2.2,
+                              initialValue: double.parse(buyerBreadCount)/10805,
                               maxValue: 5.0,
                               place: "MG Marg",
                               householdRate: 10805
                           ),
                           ProductSlider(
                               groceryType: "Bread",
-                              initialValue: 40+(10*provider.breadDistance/gangtokHouseholdRate),
+                              initialValue: 40+(10*double.parse(buyerBreadCount)/10805),
                               maxValue: 150,
-                              buyerNumbers: provider.breadDistance == 0.0 ? initailGangtokRadius*gangtokHouseholdRate : provider.breadDistance,
+                              buyerNumbers: double.parse(buyerBreadCount),
                               unit: "Pkt",
                               householdRate: gangtokHouseholdRate
                           ),
@@ -172,19 +187,19 @@ class MyHomePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          const DistanceSlider(
+                          DistanceSlider(
                               groceryType: "Milk",
                               city: "Gangtok",
-                              initialValue: 2.2,
+                              initialValue: double.parse(buyerMilkCount)/10805,
                               maxValue: 5.0,
                               place: "MG Marg",
                               householdRate: 10805
                           ),
                           ProductSlider(
                               groceryType: "Milk",
-                              initialValue: 30+(10*provider.milkDistance/gangtokHouseholdRate),
+                              initialValue: 30+(10*double.parse(buyerMilkCount)/10805),
                               maxValue: 110,
-                              buyerNumbers: provider.milkDistance == 0.0 ? initailGangtokRadius*gangtokHouseholdRate : provider.milkDistance,
+                              buyerNumbers: double.parse(buyerMilkCount),
                               unit: "Spa",
                               householdRate: gangtokHouseholdRate
                           ),
@@ -199,5 +214,77 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+  String buyerAppleCount = "0.0";
+  void readAppleData() {
+    DatabaseReference databaseReference =
+    FirebaseDatabase.instance.ref('grocery').child("-NptwFUvf3JFNT_PaxSV");
+    databaseReference.onValue.listen((event) {
+      DataSnapshot dataSnapshot = event.snapshot;
+      dynamic values = dataSnapshot.value;
+      buyerAppleCount = values["distance"].toString();
+      setState(() {});
+    });
+  }
+
+
+  String buyerBananaCount = "0";
+  void readBananaData() {
+    DatabaseReference databaseReference =
+    FirebaseDatabase.instance.ref('grocery').child("-NpywQutLP57oatKEabR");
+    databaseReference.onValue.listen((event) {
+      DataSnapshot dataSnapshot = event.snapshot;
+      dynamic values = dataSnapshot.value;
+      buyerBananaCount = values["distance"].toString();
+      setState(() {});
+    });
+  }
+
+  String buyerBreadCount = "0";
+  void readBreadData() {
+    DatabaseReference databaseReference =
+    FirebaseDatabase.instance.ref('grocery').child("-NpywSMHcSLrVg5WodQh");
+    databaseReference.onValue.listen((event) {
+      DataSnapshot dataSnapshot = event.snapshot;
+      dynamic values = dataSnapshot.value;
+      buyerBreadCount = values["distance"].toString();
+      setState(() {});
+    });
+  }
+
+  String buyerHairCutCount = "0";
+  void readHairCutData() {
+    DatabaseReference databaseReference =
+    FirebaseDatabase.instance.ref('grocery').child("-NpywRW4RETlI9Zqn_in");
+    databaseReference.onValue.listen((event) {
+      DataSnapshot dataSnapshot = event.snapshot;
+      dynamic values = dataSnapshot.value;
+      buyerHairCutCount = values["distance"].toString();
+      setState(() {});
+    });
+  }
+
+  String buyerMilkCount = "0";
+  void readMilkData() {
+    DatabaseReference databaseReference =
+    FirebaseDatabase.instance.ref('grocery').child("-NpywSieF6mGK7u3ZOT3");
+    databaseReference.onValue.listen((event) {
+      DataSnapshot dataSnapshot = event.snapshot;
+      dynamic values = dataSnapshot.value;
+      buyerMilkCount = values["distance"].toString();
+      setState(() {});
+    });
+  }
+
+  String buyerSpaCount = "0";
+  void readSpaData() {
+    DatabaseReference databaseReference =
+    FirebaseDatabase.instance.ref('grocery').child("-NpywRzo-GNWrhlGSCL1");
+    databaseReference.onValue.listen((event) {
+      DataSnapshot dataSnapshot = event.snapshot;
+      dynamic values = dataSnapshot.value;
+      buyerSpaCount = values["distance"].toString();
+      setState(() {});
+    });
   }
 }

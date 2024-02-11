@@ -5,7 +5,7 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 import '../provider/env_provider.dart';
 
-class DistanceSlider extends StatelessWidget {
+class DistanceSlider extends StatefulWidget {
   final String groceryType;
   final String city;
   final double initialValue;
@@ -14,20 +14,26 @@ class DistanceSlider extends StatelessWidget {
   final double householdRate;
   const DistanceSlider({super.key, required this.initialValue, required this.maxValue, required this.city, required this.place, required this.householdRate, required this.groceryType });
 
-  // @override
-  // void initState() {
-  //   getEnvValue().then((val)=>envTotalValue=val);
-  //   super.initState();
-  // }
-  // double? envTotalValue = 0;
-  //
-  // Future<double?> getEnvValue()async{
-  //   final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //   envTotalValue = sharedPreferences.getDouble("envTotalValue");
-  //   return envTotalValue;
-  // }
+  @override
+  State<DistanceSlider> createState() => _DistanceSliderState();
+}
+
+class _DistanceSliderState extends State<DistanceSlider> {
+
+  @override
+  void initState() {
+    getEnvValue();
+    super.initState();
+  }
+
+  double envTotalValue = 0;
+
+  getEnvValue()async{
+    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    envTotalValue = sharedPreferences.getDouble("envTotalValue") ?? 0;
+  }
   double _getRadius(){
-    return initialValue*householdRate;
+    return widget.initialValue*widget.householdRate;
   }
 
   @override
@@ -39,8 +45,8 @@ class DistanceSlider extends StatelessWidget {
     return Stack(
       children: [
         SleekCircularSlider(
-          initialValue: initialValue,
-          max: maxValue,
+          initialValue: widget.initialValue,
+          max: widget.maxValue,
           appearance: CircularSliderAppearance(
             angleRange: 240,
             customColors: CustomSliderColors(
@@ -71,24 +77,24 @@ class DistanceSlider extends StatelessWidget {
           onChangeEnd: (double value){
             // Global.trigger = true;
             // buyerProvider.setHouseholdRate(value*householdRate);
-            if(groceryType == "Apple") {
+            if(widget.groceryType == "Apple") {
               distance = buyerProvider.appleDistance;
-              buyerProvider.setAppleHouseholdRate(value*householdRate, 230+(10*value));//((envTotalValue ?? 0 / 10)*value));
-            }else if(groceryType == "Banana"){
+              buyerProvider.setAppleHouseholdRate(value*widget.householdRate, 230+(10*value));//((envTotalValue ?? 0 / 10)*value));
+            }else if(widget.groceryType == "Banana"){
               distance = buyerProvider.bananaDistance;
-              buyerProvider.setBananaHouseholdRate(value*householdRate, 60+(10*value));//((envTotalValue ?? 0 / 10)*value));
-            }else if(groceryType == "HairCut"){
+              buyerProvider.setBananaHouseholdRate(value*widget.householdRate, 60+(10*value));//((envTotalValue ?? 0 / 10)*value));
+            }else if(widget.groceryType == "HairCut"){
               distance = buyerProvider.hairCutDistance;
-              buyerProvider.setHairCutHouseholdRate(value*householdRate, 250+(10*value));//((envTotalValue ?? 0 / 10)*value));
-            }else if(groceryType == "Spa"){
+              buyerProvider.setHairCutHouseholdRate(value*widget.householdRate, 250+(10*value));//((envTotalValue ?? 0 / 10)*value));
+            }else if(widget.groceryType == "Spa"){
               distance = buyerProvider.spaDistance;
-              buyerProvider.setSpaHouseholdRate(value*householdRate, 400+(10*value));//((envTotalValue ?? 0 / 10)*value));
-            }else if(groceryType == "Bread"){
+              buyerProvider.setSpaHouseholdRate(value*widget.householdRate, 400+(10*value));//((envTotalValue ?? 0 / 10)*value));
+            }else if(widget.groceryType == "Bread"){
               distance = buyerProvider.breadDistance;
-              buyerProvider.setBrownBreadHouseholdRate(value*householdRate, 40+(10*value));//((envTotalValue ?? 0 / 10)*value));
-            }else if(groceryType == "Milk"){
+              buyerProvider.setBrownBreadHouseholdRate(value*widget.householdRate, 40+(10*value));//((envTotalValue ?? 0 / 10)*value));
+            }else if(widget.groceryType == "Milk"){
               distance = buyerProvider.milkDistance;
-              buyerProvider.setCowMilkHouseholdRate(value*householdRate, 30+(10*value));//((envTotalValue ?? 0 / 10)*value));
+              buyerProvider.setCowMilkHouseholdRate(value*widget.householdRate, 30+(10*value));//((envTotalValue ?? 0 / 10)*value));
               //230+(10*buyerProvider.appleDistance/householdRate)
             }
 
@@ -100,7 +106,7 @@ class DistanceSlider extends StatelessWidget {
           child: Align(
             alignment: Alignment.center,
             child: Text(
-              city,
+              widget.city,
               textAlign: TextAlign.center,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white),
             ),
@@ -112,7 +118,7 @@ class DistanceSlider extends StatelessWidget {
           child: Align(
             alignment: Alignment.center,
             child: Text(
-              "Inside ${place}",
+              "Inside ${widget.place}",
               textAlign: TextAlign.center,
               style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Colors.white),
             ),

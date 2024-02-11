@@ -9,16 +9,16 @@ class EnvSetup extends StatefulWidget {
 
 class _MyHomePageState extends State<EnvSetup> {
 
-  double _transportSliderValue = 5;
-  double _modernFarmingSliderValue = 5;
-  double _storageSliderValue = 5;
-  double _wasteSliderValue = 5;
-  double _seasonSliderValue = 5;
-  double _waterSupSliderValue = 5;
-  double _productionSliderValue = 5;
-  double _weatherSliderValue = 5;
-  double _organicSliderValue = 5;
-  double _qualitySeedSliderValue = 5;
+  double _transportSliderValue = 0;
+  double _modernFarmingSliderValue = 0;
+  double _storageSliderValue = 0;
+  double _wasteSliderValue = 0;
+  double _seasonSliderValue = 0;
+  double _waterSupSliderValue = 0;
+  double _productionSliderValue = 0;
+  double _weatherSliderValue = 0;
+  double _organicSliderValue = 0;
+  double _qualitySeedSliderValue = 0;
 
 
   @override
@@ -27,7 +27,8 @@ class _MyHomePageState extends State<EnvSetup> {
     super.initState();
   }
   double envTotal = 0;
-  _getEnv() async {
+  double envAverage = 0;
+    _getEnv() async {
     final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     double? transportSliderValue = sharedPreferences.getDouble("transportSliderValue");
     double? modernFarmingSliderValue = sharedPreferences.getDouble("modernFarmingSliderValue");
@@ -42,17 +43,19 @@ class _MyHomePageState extends State<EnvSetup> {
     envTotal = (transportSliderValue ?? 0) + (modernFarmingSliderValue ?? 0) + (storageSliderValue ?? 0)
     + (wasteSliderValue ?? 0) + (seasonSliderValue ?? 0) + (waterSupSliderValue ?? 0) + (productionSliderValue ?? 0)
     + (weatherSliderValue ?? 0) + (organicSliderValue ?? 0) + (qualitySeedSliderValue ?? 0);
-    _transportSliderValue = transportSliderValue ?? 0;
-    _modernFarmingSliderValue = modernFarmingSliderValue ?? 0;
-    _storageSliderValue = storageSliderValue ?? 0;
-    _wasteSliderValue = wasteSliderValue ?? 0;
-    _seasonSliderValue = seasonSliderValue ?? 0;
-    _waterSupSliderValue = waterSupSliderValue ?? 0;
-    _productionSliderValue = productionSliderValue ?? 0;
-    _weatherSliderValue = weatherSliderValue ?? 0;
-    _organicSliderValue = organicSliderValue ?? 0;
-    _qualitySeedSliderValue = qualitySeedSliderValue ?? 0;
-    await sharedPreferences.setDouble("envTotalValue", envTotal);
+    _transportSliderValue = transportSliderValue ?? 10;
+    _modernFarmingSliderValue = modernFarmingSliderValue ?? 10;
+    _storageSliderValue = storageSliderValue ?? 10;
+    _wasteSliderValue = wasteSliderValue ?? 10;
+    _seasonSliderValue = seasonSliderValue ?? 10;
+    _waterSupSliderValue = waterSupSliderValue ?? 10;
+    _productionSliderValue = productionSliderValue ?? 10;
+    _weatherSliderValue = weatherSliderValue ?? 10;
+    _organicSliderValue = organicSliderValue ?? 10;
+    _qualitySeedSliderValue = qualitySeedSliderValue ?? 10;
+    envAverage = envTotal/10;
+    await sharedPreferences.setDouble("envTotalValue", envAverage);
+    // debugPrint(envAverage.toString());
     setState(() {});
   }
 
@@ -60,7 +63,12 @@ class _MyHomePageState extends State<EnvSetup> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Environment Setup'),
+        title: Column(
+          children: [
+            const Text('Environment Setup'),
+            Text("Increment Rate: $envAverage", style: const TextStyle(fontSize: 16,color: Colors.orangeAccent),),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -83,14 +91,12 @@ class _MyHomePageState extends State<EnvSetup> {
                     max: 10,
                     divisions: 10,
                     label: _transportSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
+                    onChanged: (double value) async {
                         _transportSliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (double value) async {
-                      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-                      sharedPreferences.setDouble("transportSliderValue", _transportSliderValue);
+                        SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+                        sharedPreferences.setDouble("transportSliderValue", _transportSliderValue);
+                        _getEnv();
+                        setState(() {});
                     },
                   ),
                 ),
@@ -108,14 +114,12 @@ class _MyHomePageState extends State<EnvSetup> {
                     max: 10,
                     divisions: 10,
                     label: _modernFarmingSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
+                      onChanged: (double value) async {
                         _modernFarmingSliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (double value)async{
-                      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-                      sharedPreferences.setDouble("modernFarmingSliderValue", _modernFarmingSliderValue);
+                        SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+                        sharedPreferences.setDouble("modernFarmingSliderValue", _modernFarmingSliderValue);
+                        _getEnv();
+                        setState(() {});
                     },
                   ),
                 ),
@@ -133,14 +137,12 @@ class _MyHomePageState extends State<EnvSetup> {
                     max: 10,
                     divisions: 10,
                     label: _storageSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _storageSliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (double value)async{
+                    onChanged: (double value) async {
+                      _storageSliderValue = value;
                       SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
                       sharedPreferences.setDouble("storageSliderValue", _storageSliderValue);
+                      _getEnv();
+                      setState(() {});
                     },
                   ),
                 ),
@@ -158,14 +160,12 @@ class _MyHomePageState extends State<EnvSetup> {
                     max: 10,
                     divisions: 10,
                     label: _wasteSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _wasteSliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (double value)async{
+                    onChanged: (double value) async {
+                      _wasteSliderValue = value;
                       SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
                       sharedPreferences.setDouble("wasteSliderValue", _wasteSliderValue);
+                      _getEnv();
+                      setState(() {});
                     },
                   ),
                 ),
@@ -183,14 +183,12 @@ class _MyHomePageState extends State<EnvSetup> {
                     max: 10,
                     divisions: 10,
                     label: _seasonSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _seasonSliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (double value)async{
+                    onChanged: (double value) async {
+                      _seasonSliderValue = value;
                       SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-                      sharedPreferences.setDouble("seasonSliderValue", _wasteSliderValue);
+                      sharedPreferences.setDouble("seasonSliderValue", _seasonSliderValue);
+                      _getEnv();
+                      setState(() {});
                     },
                   ),
                 ),
@@ -208,14 +206,12 @@ class _MyHomePageState extends State<EnvSetup> {
                     max: 10,
                     divisions: 10,
                     label: _waterSupSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _waterSupSliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (double value)async{
+                    onChanged: (double value) async {
+                      _waterSupSliderValue = value;
                       SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-                      sharedPreferences.setDouble("waterSupSliderValue", _wasteSliderValue);
+                      sharedPreferences.setDouble("waterSupSliderValue", _waterSupSliderValue);
+                      _getEnv();
+                      setState(() {});
                     },
                   ),
                 ),
@@ -233,14 +229,12 @@ class _MyHomePageState extends State<EnvSetup> {
                     max: 10,
                     divisions: 10,
                     label: _productionSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _productionSliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (double value)async{
+                    onChanged: (double value) async {
+                      _productionSliderValue = value;
                       SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
                       sharedPreferences.setDouble("productionSliderValue", _productionSliderValue);
+                      _getEnv();
+                      setState(() {});
                     },
                   ),
                 ),
@@ -258,14 +252,12 @@ class _MyHomePageState extends State<EnvSetup> {
                     max: 10,
                     divisions: 10,
                     label: _weatherSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _weatherSliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (double value)async{
+                    onChanged: (double value) async {
+                      _weatherSliderValue = value;
                       SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
                       sharedPreferences.setDouble("weatherSliderValue", _weatherSliderValue);
+                      _getEnv();
+                      setState(() {});
                     },
                   ),
                 ),
@@ -283,14 +275,12 @@ class _MyHomePageState extends State<EnvSetup> {
                     max: 10,
                     divisions: 10,
                     label: _organicSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _organicSliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (double value)async{
+                    onChanged: (double value) async {
+                      _organicSliderValue = value;
                       SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
                       sharedPreferences.setDouble("organicSliderValue", _organicSliderValue);
+                      _getEnv();
+                      setState(() {});
                     },
                   ),
                 ),
@@ -308,14 +298,12 @@ class _MyHomePageState extends State<EnvSetup> {
                     max: 10,
                     divisions: 10,
                     label: _qualitySeedSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _qualitySeedSliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (double value)async{
+                    onChanged: (double value) async {
+                      _qualitySeedSliderValue = value;
                       SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
                       sharedPreferences.setDouble("qualitySeedSliderValue", _qualitySeedSliderValue);
+                      _getEnv();
+                      setState(() {});
                     },
                   ),
                 ),
