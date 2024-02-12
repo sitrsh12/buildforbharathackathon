@@ -43,16 +43,16 @@ class _MyHomePageState extends State<EnvSetup> {
     envTotal = (transportSliderValue ?? 0) + (modernFarmingSliderValue ?? 0) + (storageSliderValue ?? 0)
     + (wasteSliderValue ?? 0) + (seasonSliderValue ?? 0) + (waterSupSliderValue ?? 0) + (productionSliderValue ?? 0)
     + (weatherSliderValue ?? 0) + (organicSliderValue ?? 0) + (qualitySeedSliderValue ?? 0);
-    _transportSliderValue = transportSliderValue ?? 10;
-    _modernFarmingSliderValue = modernFarmingSliderValue ?? 10;
-    _storageSliderValue = storageSliderValue ?? 10;
-    _wasteSliderValue = wasteSliderValue ?? 10;
-    _seasonSliderValue = seasonSliderValue ?? 10;
-    _waterSupSliderValue = waterSupSliderValue ?? 10;
-    _productionSliderValue = productionSliderValue ?? 10;
-    _weatherSliderValue = weatherSliderValue ?? 10;
-    _organicSliderValue = organicSliderValue ?? 10;
-    _qualitySeedSliderValue = qualitySeedSliderValue ?? 10;
+    _transportSliderValue = transportSliderValue ?? 0;
+    _modernFarmingSliderValue = modernFarmingSliderValue ?? 0;
+    _storageSliderValue = storageSliderValue ?? 0;
+    _wasteSliderValue = wasteSliderValue ?? 0;
+    _seasonSliderValue = seasonSliderValue ?? 0;
+    _waterSupSliderValue = waterSupSliderValue ?? 0;
+    _productionSliderValue = productionSliderValue ?? 0;
+    _weatherSliderValue = weatherSliderValue ?? 0;
+    _organicSliderValue = organicSliderValue ?? 0;
+    _qualitySeedSliderValue = qualitySeedSliderValue ?? 0;
     envAverage = envTotal/10;
     await sharedPreferences.setDouble("envTotalValue", envAverage);
     // debugPrint(envAverage.toString());
