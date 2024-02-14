@@ -75,6 +75,39 @@ In my opinion these assumption are applicable in all case scenario because the s
 An efficient architecture is not to memorise the past event and to derive the outcome out of it. But an actual efficiency is when, an application read the current available data from the large number of people in a realtime and come out with the more robust outcome, which decides the future of the market. Said this, the real time data are actually more efficient than the stored database not just to derive the complex algorithm but to change the future of market. 
 
 The market moves basically on herd mentality where a crowd will decide the direction of the market. The fact is also little bit harsh if these data are driven by the single entity, which I hope will be take care with the help of blockchain technology on later days.
+___________________________________________________________________________
+
+## IDEA
+
+- This Idea deals with real time scenario and ahead of time decision taking approach
+- This Idea takes almost everything into the account including farmers and their education to demand of the market.
+- Uses Real Time Database to filter and search the data.
+- Can take a forecasting decision about the market and its demand
+- Set the time interval for the active price for e-commerce and retail stores
+- Set the time interval for search accumulation
+- Easy to use flutter Application anyone can customise and scale.
+
+______________________________________________________________________________
+
+## Execution
+
+I built three applications to demonstrate my Idea, First application i.e. environment setup application shows the simulation of real time scenario. Starting with data collection into the application from different resources may it be google map data, scrapping data, Data entered during inventory making or the data from the database. 
+
+For simulation of this prototype I manually supplied these values. Based on supplied data, I calculated the number of searches per square Km at that particular time range and area.
+
+THESE SEARCHES ARE THE SEARCHES COUNT ACCUMULATED WITHIN THE PREVIOUS TIME INTERVAL OF THE SELLER APPLICATION.
+
+These searches are  used on two places. First to decide the rate of increment of the price, searches has a different weightage and summed along with the other factors like transportation costs, water supply or any other factors that are responsible for the price to increase or decrease. 
+
+More the searches more will be the demand and hence more will be the price. Search weightage is high therefore impact on price is high. Other factors weightage may low therefore impact on price may low. At-least I assumed for this demonstration.
+
+Second, these searches helps ONDC to fulfil the upcoming demand of the market on a timely basis. This helps ONDC to view a larger picture of upcoming demand of the market as well as challenges. It also helps ONDC to filter the buyer numbers out of searchers during morning, daytime or evening.
+
+The Average Buying price in seller app continuously changes in a realtime. This is to figure out the market trend at that particular time range. Based on which ONDC. 
+1. Sets buying price of the item at e-commerce platform at that particular place and time-range as per the profitability of the distributed network (Farmers and Vendors).
+2. Sets the selling price of the retail stores or the Sabji Mandi.
+
+__________________________________________________________________________
 
 
 ## Prepare the executables:
