@@ -123,7 +123,7 @@ _______________________________________________________________________
 
 ## Set Up Your Environment:
 
-- Ensure you have 3 necessary android phone handy. Install environment setup application on the first phone. Install seller setup application on second phone and install buyer setup application on third. You can also install all 3 app on the same phone. But to test all application on the real time, 3 phones are suggested. Turn on “install app from unknown sources” in the settings of your android application.
+- Ensure you have 3 necessary android phone handy. Install environment setup application on the first phone. Install seller setup application on second phone and install buyer setup application on third. You can also install all 3 app on the same phone. But to test all application on the real time, 3 phones are suggested. Turn on “install app from unknown sources” in the settings of your android phone.
 
 ## Application Testing:
 
