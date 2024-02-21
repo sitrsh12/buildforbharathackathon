@@ -114,9 +114,11 @@ __________________________________________________________________________
 
 ## Prepare the executables:
 
-Download the 3 APK files from the link provided 
+Download the 3 APK files from the link provided into three different android phones.
 
-https://github.com/sitrsh12/buildforbharathackathon/tree/main/executables
+1. Environment Setup Application: https://zappertrip.com/envSetupApp.apk
+2. Buyer Setup Application: https://zappertrip.com/buyerApp.apk
+3. Seller Setup Application: https://zappertrip.com/sellerApp.apk
 _______________________________________________________________________
 
 ## Set Up Your Environment:
