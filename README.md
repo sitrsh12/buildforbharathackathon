@@ -135,7 +135,8 @@ _______________________________________________________________________
 
 - On a seller setup app watch closely if timer triggered first on initial state, second On horizontal slider changes on third when env setup app slider changes.
 
-- Open the buyer setup application on the third android phone. Watch closely if the buyer price changes on seller application
+- Open the buyer setup application on the third android phone. Watch closely if the buying price changes on buyer application 
+upon changing in horizontal slider on seller application.
 
 ___________________________________________________________________________
 
